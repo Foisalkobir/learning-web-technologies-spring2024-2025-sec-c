@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation</title>
+    <script>
+        function validateEmail() {
+            let email = document.getElementById("email").value.trim();
+            let error = "";
+
+            if (email === "") {
+                error = "Email cannot be empty.";
+            } else if (!email.includes("@") || !email.includes(".")) {
+                error = "Email must be a valid format (example@example.com).";
+            } else {
+                let atIndex = email.indexOf("@");
+                let dotIndex = email.lastIndexOf(".");
+                if (atIndex < 1 || dotIndex < atIndex + 2 || dotIndex + 2 >= email.length) {
+                    error = "Email must be a valid format (example@example.com).";
+                }
+            }
+
+            if (error) {
+                alert(error);
+                return false;
+            }
+            alert("Email is valid!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Email Validation</h2>
+    <form onsubmit="return validateEmail()">
+        <input type="text" id="email" placeholder="Enter your email">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

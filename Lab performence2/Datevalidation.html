@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date of Birth Validation</title>
+    <script>
+        function validateDOB() {
+            let day = document.getElementById("day").value.trim();
+            let month = document.getElementById("month").value.trim();
+            let year = document.getElementById("year").value.trim();
+            let error = "";
+
+            if (day === "" || month === "" || year === "") {
+                error = "Date of Birth cannot be empty.";
+            } else {
+                let d = parseInt(day);
+                let m = parseInt(month);
+                let y = parseInt(year);
+
+                if (isNaN(d) || d < 1 || d > 31) {
+                    error = "Day must be between 1 and 31.";
+                } else if (isNaN(m) || m < 1 || m > 12) {
+                    error = "Month must be between 1 and 12.";
+                } else if (isNaN(y) || y < 1900 || y > 2016) {
+                    error = "Year must be between 1900 and 2016.";
+                }
+            }
+
+            if (error) {
+                alert(error);
+                return false;
+            }
+            alert("Date of Birth is valid!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Date of Birth Validation</h2>
+    <form onsubmit="return validateDOB()">
+        <input type="text" id="day" placeholder="dd" size="2"> /
+        <input type="text" id="month" placeholder="mm" size="2"> /
+        <input type="text" id="year" placeholder="yyyy" size="4">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

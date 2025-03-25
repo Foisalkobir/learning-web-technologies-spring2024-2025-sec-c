@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Picture Upload</title>
+    <script>
+        function validateProfileUpload() {
+            let userId = document.getElementById("userId").value.trim();
+            let file = document.getElementById("picture").value;
+            let error = "";
+
+            if (userId === "") {
+                error = "User ID cannot be empty.";
+            } else if (file === "") {
+                error = "Please select a profile picture.";
+            }
+
+            if (error) {
+                alert(error);
+                return false;
+            }
+            alert("Profile upload is valid!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Profile Picture Upload</h2>
+    <form onsubmit="return validateProfileUpload()">
+        <label>User ID: <input type="text" id="userId"></label><br><br>
+        <label>Picture: <input type="file" id="picture"></label><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
